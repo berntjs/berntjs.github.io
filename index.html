@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <title>Boden til fred</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  <title>Boden til fred</title>
+  <style>
+    .left { float: left; margin-left: 20px; width: 40%; }
+    .right { float: right; margin-right: 20px; width: 60%; }
+    #boden { width: 100%; height: 10em; }
+  </style>
 </head>
 <body>
-
-<h1>Ka har fred i boden?</h1>
-<form>
-  <label for="fname">Ting</label><input type="text" id="fname" name="fname">
-</form>
-
+<script>
+  jQuery(document).ready( function(){
+    jQuery( '#add' ).click( function(){
+      let ting = jQuery('#fname').val();
+      let antall = jQuery('#fnum').val();
+      let bod = jQuery('#boden').text();
+      jQuery('#boden').text( `${bod}${ting} - ${antall} stk.\n`);
+      jQuery('#fname').val( '' );
+      jQuery('#fnum').val( '' );
+    });
+  });
+</script>
+<div class="container">
+  <h1>Ka har fred i boden?</h1>
+  <div class="left">
+    <form>
+      <label for="fname">Ting</label><input type="text" id="fname" name="fname">
+      <label for="fnum">Antall</label><input type="number" id="fnum" name="fnum">
+      <input type="button" id="add" value="LEGG TIL I BODEN">
+    </form>
+  </div>
+  <div class="right">
+    <label>
+      <textarea id="boden" readonly></textarea>
+    </label>
+  </div>
+</div>
 </body>
 </html> 
